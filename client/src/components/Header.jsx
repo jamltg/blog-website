@@ -1,22 +1,26 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import HamburgerHeader from "./HamburgerHeader";
+import MainHeader from "./MainHeader";
 
 export default function Header() {
+  const [isOpen, setOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setOpen(!isOpen);
+  };
+
   return (
-    <div className="h-20 w-full px-8 bg-red-200 flex justify-between items-center">
-      <Link>
-        <span className="text-xl font-semibold">Jam&apos;s Blog</span>
-      </Link>
-      <ul className="flex space-x-3">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/resources">Resources</Link>
-        </li>
-      </ul>
+    <div className='bg-red-200'>
+        <div className='h-24 max-w-[1240px] mx-auto flex items-center justify-between px-8'>
+            <MainHeader toggleMenu={toggleMenu} isOpen={isOpen}/>
+        </div>
+        <div className="max-w-[1240px] mx-auto px-8">
+            {isOpen && (
+              <HamburgerHeader/>
+            )}
+        </div>
     </div>
   )
 }
+
+
