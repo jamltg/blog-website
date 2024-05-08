@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Oval } from 'react-loader-spinner'
 import { useDispatch, useSelector } from "react-redux";
 import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice";
+import OAuth from "./OAuth";
 
 export default function SignInForm() {
   const [email, setEmail] = useState('');
@@ -84,6 +85,7 @@ export default function SignInForm() {
               </>
             )}
           </button>
+          <OAuth/>
         </div>
       </form>
       <div className="flex gap-2 text-sm mt-5">

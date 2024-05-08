@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { Oval } from 'react-loader-spinner'
+import OAuth from "./OAuth";
 
 export default function SignUpForm() {
   const [username, setUsername] = useState('');
@@ -96,6 +97,7 @@ export default function SignUpForm() {
               'Sign Up'
             )}
           </button>
+          <OAuth/>
         </div>
       </form>
       <div className="flex gap-2 text-sm mt-5">
