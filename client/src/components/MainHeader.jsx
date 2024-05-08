@@ -24,7 +24,7 @@ export default function MainHeader({toggleMenu, isOpen}) {
                 </li>
               </ul>
               <div className='hidden md:block'>
-                <button className='border-2 px-4 py-2 rounded-lg'>Sign In</button>
+                <Link to="/sign-in"><button className='border-2 px-4 py-2 rounded-lg'>Sign In</button></Link>
               </div>
             </div>
             <div className="md:hidden">

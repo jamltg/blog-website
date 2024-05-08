@@ -1,4 +1,4 @@
-export default function SignupInfo() {
+export default function SignUpInfo() {
   return (
     <div className="hidden md:flex flex-1 h-full items-center justify-center">
       <div className="space-y-6">
