@@ -1,22 +1,23 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { Oval } from 'react-loader-spinner'
+import { useDispatch, useSelector } from "react-redux";
+import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice";
 
 export default function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error:errorMessage} = useSelector(state => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password){
-      setErrorMessage('Please fill out all fields');
+      return dispatch(signInFailure('Please fill out all fields'));
     }
     try{
-      setLoading(true);
-      setErrorMessage(null);
+      dispatch(signInStart());
       const res = await fetch('http://localhost:3000/api/auth/signin',{
         method:'POST',
         headers:{'Content-type':'application/json'},
@@ -27,17 +28,14 @@ export default function SignInForm() {
       });
       const data = await res.json();
       if (data.success === false){
-        setErrorMessage(data.message);
-        setLoading(false);
-        return;
+        dispatch(signInFailure(data.message));
       }
-      setLoading(false);
       if (res.ok){
+        dispatch(signInSuccess(data));
         navigate('/');
       }
     }catch(err){
-      setLoading(false);
-      setErrorMessage(err.message);
+      dispatch(signInFailure(err.message));
     }
   }
 
