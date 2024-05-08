@@ -10,7 +10,7 @@ export default function Header() {
   };
 
   return (
-    <div>
+    <div className="dark:bg-gray-400">
         <div className='h-24 max-w-[1240px] mx-auto flex items-center justify-between px-8'>
             <MainHeader toggleMenu={toggleMenu} isOpen={isOpen}/>
         </div>
