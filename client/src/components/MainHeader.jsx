@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Pivot as Hamburger } from 'hamburger-react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Avatar, Dropdown } from 'flowbite-react';
+import { toggleTheme } from '../redux/theme/themeSlice';
 
 // eslint-disable-next-line react/prop-types
 export default function MainHeader({toggleMenu, isOpen}) {
   const { currentUser } = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -14,6 +16,14 @@ export default function MainHeader({toggleMenu, isOpen}) {
             </Link>
             <div>
               <h1>Search</h1>
+            </div>
+            <div>
+              <button 
+                className='border-2 border-blue-600 white rounded-lg px-4 py-2 dark:border-red-400'
+                onClick={()=>dispatch(toggleTheme())}
+              >
+                DARKMODE
+              </button>
             </div>
             <div className='flex items-center'>
               <ul className='hidden lg:flex'>

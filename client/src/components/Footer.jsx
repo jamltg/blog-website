@@ -1,7 +1,7 @@
 import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from 'react-icons/bs';
 export default function Footer() {
   return (
-    <div className='bg-red-200'>
+    <div>
       <div className='h-28 max-w-[1240px] px-8 py-4 mx-auto flex justify-between items-center'>
         <div>
           <h1>Jam&apos;s Blog</h1>
